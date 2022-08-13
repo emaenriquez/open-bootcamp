@@ -93,8 +93,6 @@ let find = new_arr.find(item => {
     }
 })
 
-console.log(find)
-
 const obj = [
     {nombre:"emanuel", edad:19},
     {nombre:"david",edad:25},
@@ -103,20 +101,13 @@ const obj = [
     {nombre:"lucia",edad:26}
 ]
 
-/*
-const edad_obj = obj.find(item=>{
-    if(item.nombre === "emanuel"){
-        return true
-    }
-})
-*/
 console.log("------------")
 
 const edad_obj = obj.find(item=>item.nombre === "emanuel")
 
 const {edad} = obj.find(item => item.nombre === "miguel")
 
-// .map() 
+// .map() como foreach pero devuelve un nuevo array
 let arr_city_movie = ["Gotica","Smallvile","New York","Atrantis"]
 
 let arr_city_index = arr_city_movie.map((index,item)=> `${item + 1} - ${index}`)
@@ -124,7 +115,110 @@ let arr_city_index = arr_city_movie.map((index,item)=> `${item + 1} - ${index}`)
 console.log(arr_city_index)
 
 // .filter()
+let age = obj.filter(obj => obj.edad > 20)
+console.log(age)
+
+let nom = obj.filter(obj => obj.nombre !== "miguel")
+console.log(nom)
+
+// .reduce() obtiene un valor a partir de una lista
+console.log("----------------")
+const valores =[1,2,3,4,5,6,7,8,1,1]
+
+const suma = valores.reduce((cont,valorActual,index,arr)=>{
+    return cont + valorActual
+})
+
+console.log(suma)
 
 
+// ordenacion de lista y comparacion entre dos lista
 
-// .reduce()
+// .sort() - modifica el arr
+console.log("----------------")
+
+let numeros = [1,2,3,12,21,421,21,21,312,131,1231]
+console.log(numeros)
+numeros.sort((a,b)=> {
+    if(a<b){
+        return -1
+    } else if(a > b){
+        return +1
+    } else{
+        return 0
+    }
+})
+console.log(numeros)
+
+// ordenar unicamente array numericos
+
+let arrNum = [12,31,2,12,21,213,1]
+
+arrNum.sort((a,b) => a-b)
+
+console.log(arrNum)
+
+obj.sort((a,b)=> a.edad - b.edad)
+
+console.log(obj)
+
+// como comparar una lista
+// every()
+
+let arr = [1,2,3,4,5,6,71,21,-1,-2,-3,21,21,-4]
+
+const result = arr.every(valor => valor > 0)
+const result_2 = arr.every(valor => typeof valor === "number")
+
+console.log(result)
+console.log(result_2)
+
+// Error asi no se pueden comparar lista
+let r1 = [1,2,3,4]
+let r2 = [1,2,3,4]
+let r3 = [1,2,3,6]
+
+console.log( r1 === r2)
+
+// como debemos comparar
+
+const comparacionArr = (r1,r2)=>{
+    if(r1.length !== r2.length) return false
+    const res = r1.every((valor,index)=> valor === r2[index])
+    return res
+}
+
+console.log(comparacionArr(r1,r2)) // true
+console.log(comparacionArr(r1,r3)) // false
+
+// identificar si existe un valor en un arr
+// te devuelve true si almenos uno de los elementos los cumple
+// some()
+
+console.log("-------")
+
+let nume = [1,23,4,6,7,32,21,21,341,31,21,31]
+
+const res = nume.some(valor=> valor > 0) // true
+const existe = nume.some(valor=> valor === 2) // false
+
+const existe_person = obj.some(valor => valor.nombre === "miguel")
+
+console.log(res)
+console.log(existe)
+console.log(existe_person)
+
+// como obtener una lista a partir de un obj iterable
+
+const str = "hola soy emanuel"
+
+const str_arr = Array.from(str)
+
+console.log(str_arr)
+
+const key = array.keys()
+console.log(key)
+
+const arr_key = Array.from(key)
+
+console.log(arr_key)
