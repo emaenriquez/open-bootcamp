@@ -75,7 +75,7 @@ let divisor_2 = null
 console.log(numerador / divisor)
 console.log(numerador / divisor_2)
 console.log("-----------------")
-// convertir string a numeros Number ,parseInt , parseFloat
+// convertir string a numeros Number ,parseInt() , parseFloat()
 
 let n1 = "5.90"
 let n2 = 19.0
@@ -84,7 +84,7 @@ console.log(n1 + n2)
 console.log(Number(n1) + n2)
 
 console.log(parseInt(n1)) // lo convierte en un numero entero le saca los decimales
-console.log(parseFloat(n1))
+console.log(parseFloat(n1)) // lo convierte en un entero con decimales
 
 console.log("-----------------")
 // numeros hexadecimales

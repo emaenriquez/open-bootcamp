@@ -28,7 +28,7 @@ console.log(compra)
 const pelis = [
     {nombre:"The Incredible Hulk", Director:"Louis Leterrier",fecha: new Date(2008,6,13)},
     {nombre:"Iron Man 2",Director:"Jon Favreau",fecha: new Date(2010,4,28)},
-    {nombre:"Thor ",Director:"Matthew Vaughn",fecha: new Date(2011,4,30)}
+    {nombre:"Thor",Director:"Matthew Vaughn",fecha: new Date(2011,4,30)}
 ]
 
 let fecha_posterior = new Date(2010,1,1)
