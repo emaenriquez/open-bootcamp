@@ -1,7 +1,6 @@
 
-
 // como se declaran y como se utilizan
-// bloque de codigo que se ejecuta con un fin especifico
+// se utiliza como bloque de codigo que se ejecuta con un fin especifico
 
 // buscar pasaje por valor y por referencia
 
@@ -105,22 +104,22 @@ sal()
 
 // funciones asincrona y promesas
 
-// const promesa = new Promise((resolve,reject)=>{
-//         const i = Math.floor(Math.random()*2)
-// si esta todo correcto
-//         if(i !== 0){
-//             resolve()
-//         } else {
-//             reject()
-//         }
-// })
+const promesa = new Promise((resolve,reject)=>{
+        const i = Math.floor(Math.random()*2)
+        //si esta todo correcto
+        if(i !== 0){
+            resolve()
+        } else {
+            reject()
+        }
+})
 
-// promesa
-//     .then(()=> console.log("se ha ejecutado de forma correcta"))
-//     .catch(()=> console.log("ha ocurido un error"))
-//     .finally(()=> console.log("yo me ejecuto siempre"))
+promesa
+    .then(()=> console.log("se ha ejecutado de forma correcta"))
+    .catch(()=> console.log("ha ocurido un error"))
+    .finally(()=> console.log("yo me ejecuto siempre"))
 
-// funciones generadoras 
+//funciones generadoras 
 
 function* generar_id(){
     let id = 0;
@@ -139,8 +138,4 @@ const gem = generar_id();
 
 
 console.log(gem.next())
-console.log(gem.next())
-console.log(gem.next())
-console.log(gem.next())
-console.log(gem.next())
-console.log(gem.next())
+

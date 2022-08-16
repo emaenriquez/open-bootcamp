@@ -446,3 +446,381 @@ for (let i = 0; i < l.length; i++) {
     console.log(min_valor_js)
     console.log(max_valor_js)
 ```
+
+# metodos de lista y como obtener su valor
+
+* acceder a los valores de un array a traves de su posicion
+
+```js
+    let n = 23
+    let array = [1,"hola",false,{ id:5 },null,undefined,n]
+    console.log(array[4])
+```
+
+* introducir nuevos valores
+
+```js
+    let array = [1,"hola",false,{ id:5 },null,undefined,n]
+    array.push("final") // valores al final
+    array.unshift("inicio") // valores al inicio
+```
+
+* eliminar valores de un array
+```js
+    let new_array = [1,2,3,4,5,"hola mundo"]
+    new_array.pop() // elimina valores al final
+    new_array.shift() // elimina valores al inicio
+```
+* .splice(x,y,z)
+metodo para eliminar , modificar añadir valores en nuestro array
+
+```js
+    let new_array_3 = [1,2,3,4,5,6]
+
+    new_array_3.splice(2,3) // elimina valores .splice(index,valoresEliminar)
+    new_array_3.splice(2,0,"hola") // agrega valores
+
+    // modificar valores
+    new_array_3.splice(3,1,"nuevo tres")
+```
+* .concat()
+unir dos array 
+```js
+    let ar1 = ["hola",32,true,null]
+    let ar2 = ["adios",9,8,undefined]
+
+    let ar3 = ar1.concat(ar2)
+
+    // como unir dos arr con el factor de propagacion
+
+    const ar4 = [...ar1 ,...ar2]
+
+    // ERROR
+
+    const ar5 = [ar1,ar2]
+```
+
+* .slice() 
+como obtener una lista apartir de otra
+```js
+    const a = ["hola",1,2,3,4,null,undefined,"adios"]
+
+    // no modifica el valor de arr original - el ultimo valor no lo toma
+    let arr_b = a.slice(1,5)
+```
+
+* forEach
+iterar valores de una lista
+```js
+    let new_arr = [1,2,34,5,76,21,21]
+
+    // forma antigua 
+    for (let i = 0; i < new_arr.length; i++) {
+        console.log(new_arr[i])
+    }
+
+    // mas eficiente
+
+    let cont = 0
+    new_arr.forEach(item => {
+        cont += item    
+    })
+```
+* .find()
+buscar una valor dentro de una lista 
+
+```js
+    let new_arr = [1,2,34,5,76,21,21]
+    
+    let find = new_arr.find(item => {
+        if(item === 1){
+            return true
+        }
+    })
+
+    const obj = [
+        {nombre:"emanuel", edad:19},
+        {nombre:"david",edad:25},
+        {nombre:"miguel",edad:28},
+        {nombre:"luis",edad:5},
+        {nombre:"lucia",edad:26}
+    ]
+
+    const edad_obj = obj.find(item=>item.nombre === "emanuel")
+```
+* .map() 
+como foreach pero devuelve un nuevo array
+```js
+    let arr_city_movie = ["Gotica","Smallvile","New York","Atrantis"]
+
+    let arr_city_index = arr_city_movie.map((index,item)=> `${item + 1} - ${index}`)
+```
+
+* .filter()
+```js
+    const obj = [
+        {nombre:"emanuel", edad:19},
+        {nombre:"david",edad:25},
+        {nombre:"miguel",edad:28},
+        {nombre:"luis",edad:5},
+        {nombre:"lucia",edad:26}
+    ]
+    let age = obj.filter(obj => obj.edad > 20)
+
+    let nom = obj.filter(obj => obj.nombre !== "miguel")
+```
+
+* .reduce() 
+obtiene un valor a partir de una lista
+```js
+    const valores =[1,2,3,4,5,6,7,8,1,1]
+
+    const suma = valores.reduce((cont,valorActual,index,arr)=>{
+        return cont + valorActual
+    })
+```
+
+* .sort() 
+modifica el arr - ordenacion de lista y comparacion entre dos lista
+
+```js
+
+    // ordenar unicamente array numericos
+
+    let arrNum = [12,31,2,12,21,213,1]
+    arrNum.sort((a,b) => a-b)
+    
+    const obj = [
+        {nombre:"emanuel", edad:19},
+        {nombre:"david",edad:25},
+        {nombre:"miguel",edad:28},
+        {nombre:"luis",edad:5},
+        {nombre:"lucia",edad:26}
+    ]
+    // ordena el obj por edad
+    obj.sort((a,b)=> a.edad - b.edad)
+```
+* every()
+como comparar una lista
+```js
+    let arr = [1,2,3,4,5,6,71,21,-1,-2,-3,21,21,-4]
+
+    const result = arr.every(valor => valor > 0)
+    const result_2 = arr.every(valor => typeof valor === "number")
+
+    // Error asi no se pueden comparar lista
+    let r1 = [1,2,3,4]; let r2 = [1,2,3,4] ; let r3 = [1,23,3,4]
+
+    console.log( r1 === r2)
+
+    // como debemos comparar
+
+    const comparacionArr = (r1,r2)=>{
+        if(r1.length !== r2.length) return false
+        
+        const res = r1.every((valor,index)=> valor === r2[index])
+        return res
+    }
+
+    console.log(comparacionArr(r1,r2)) // true
+    console.log(comparacionArr(r1,r3)) // false
+```
+
+
+
+* some()
+identificar si existe un valor en un arr
+te devuelve true si almenos uno de los elementos los cumple
+
+```js
+    let nume = [1,23,4,6,7,32,21,21,341,31,21,31]
+    const res = nume.some(valor=> valor > 0) // true
+    const existe = nume.some(valor=> valor === 2) // false
+
+    const obj = [
+        {nombre:"emanuel", edad:19},
+        {nombre:"david",edad:25},
+        {nombre:"miguel",edad:28},
+        {nombre:"luis",edad:5},
+        {nombre:"lucia",edad:26}
+    ]
+    const existe_person = obj.some(valor => valor.nombre === "miguel") // true
+```
+* key()
+como obtener una lista a partir de un obj iterable
+
+```js
+    const str = "hola soy emanuel"
+    const str_arr = Array.from(str)
+    const key = array.keys()
+    const arr_key = Array.from(key)
+```
+
+# Sets
+
+conjunto no ordenado de valores unicos - nunca permite almacenar valores ya existente
+la diferencia entre arr y sets es que los set nos permite asegurarnos de que dentro del conjunto los valores no van a estar repetidos
+
+```js
+    const arr = [1,2,3,4,5,2,3,4,5,10,"hola",{id:5},{id:5},"hola"]
+    const sets = new Set(arr)
+
+    sets.forEach(item=>{
+        console.log(item)
+    })
+
+    const i_set = sets.values()
+```
+
+## Sets metodos
+* .add() añade elementos
+```js
+    const arr = [1,2,3,4,5,2,3,4,5,10,"hola",{id:5},{id:5},"hola"]
+    const sets = new Set(arr)
+    sets.add("11")
+```
+
+* .delete() elimina elementos
+
+```js
+    const arr = [1,2,3,4,5,2,3,4,5,10,"hola",{id:5},{id:5},"hola"]
+    const sets = new Set(arr)
+    sets.detele("hola")
+```
+* .clear() elemina todos los elementos
+```js
+    const arr = [1,2,3,4,5,2,3,4,5,10,"hola",{id:5},{id:5},"hola"]
+    const sets = new Set(arr)
+    sets.clear()
+```
+
+* .has() si incluye un valor
+```js
+    const arr = [1,2,3,4,5,2,3,4,5,10,"hola",{id:5},{id:5},"hola"]
+    const sets = new Set(arr)
+    sets.has(1))
+```
+
+* .size() tamaño del set 
+```js
+    const arr = [1,2,3,4,5,2,3,4,5,10,"hola",{id:5},{id:5},"hola"]
+    const sets = new Set(arr)
+    console.log(sets.size)
+```
+
+# funciones - se utiliza como bloque de codigo que se ejecuta con un fin especifico
+
+```js   
+    const nom = "emanuel"
+
+    function saludar(nombre){
+        console.log(`hola ${nombre}`)
+    }
+
+    saludar(nom)
+
+    let persona = {nombre:"juan",apellido:"gonzales"}
+
+    function saludarPersona(obj){
+        console.log(`hola ${obj.nombre} ${obj.apellido}`)
+    }
+
+    saludarPersona(persona)
+```
+ponemos el parametro por defecto si el usuario no ingresa o pasa el parametro 
+```js
+    function imprimirNumero(numero = 9){ // parametro por defecto
+        console.log(numero)
+    }
+
+    imprimirNumero(9)
+    imprimirNumero()
+```
+ponemos parametros con el factor de propagacion
+```js   
+    function imprimir(...parametro){
+        console.log(parametro)
+    }
+
+    imprimir(1,2,3,4,5,76,"hola mundo",true)
+
+    function sumar(...num){
+        let red = num.reduce((a,b)=> a + b )
+    
+        return red
+    }
+
+    let s = sumar(1,2,3,4,5,677,87)
+```
+
+## funciones tipos flechas y anonimas
+
+```js
+    const arr = [1,2,3,4,5,6,7,8,9,10]
+    const arr_2 = arr.map(valor => valor * 2)
+
+    console.log(arr_2)
+
+    const doble = valor => valor*2
+    const doble_valor = valor =>{
+        return valor*2
+    }
+    
+    console.log(doble(6))
+    console.log(doble_valor(9))
+```
+
+
+## cargar y sobrecarga de funciones
+
+cargar
+* 1 - global()
+* 2 - saludar() global()   
+* 3 - hola() saludar() global()
+* 4 - saludar() global()
+* 5 - global()
+
+* sobrecarga
+```js
+    function recursiva(){
+        recursiva()
+    }
+    recursiva()
+```
+
+## funciones asincrona y promesas
+
+```js
+    const promesa = new Promise((resolve,reject)=>{
+        const i = Math.floor(Math.random()*2)
+        //si esta todo correcto
+        if(i !== 0){
+            resolve()
+        } else {
+            reject()
+        }
+    })
+
+    promesa
+        .then(()=> console.log("se ha ejecutado de forma correcta"))
+        .catch(()=> console.log("ha ocurido un error"))
+        .finally(()=> console.log("yo me ejecuto siempre"))
+```
+
+## funciones generadoras 
+```js
+    function* generar_id(){
+        let id = 0;
+        while(true){
+            id++       
+            if (id > 10) {
+                return id
+            } 
+            yield id // esperando hasta que se vuelva a llamar
+        }
+    }
+
+    const gem = generar_id();
+
+    console.log(gem.next())
+```
