@@ -826,7 +826,7 @@ cargar
 ```
 
 # Gestion de Errores con Try y Catch
-
+```js
 const miFunction = val =>{
     if(typeof val === "number"){ 
         return 2 * val
@@ -848,3 +848,42 @@ try{
 } finally {
     console.log("esto se va a ejecutar ya sea si esta todo correcto o no")
 }
+```
+# export y import js
+- iniciamos en lacarpeta npm init -y le agregamos al json esa linea
+```json
+    "type": "module",
+```
+- creamos la carpeta modules(o cualquier nombre) creamos los archivos js y los bloques de codigo que vamos a usar
+```js
+    // carpeta modules export para exportar nuestro bloque de codigo
+    export function suma(a,b){
+        return a + b
+    }
+
+    export function multiplica(a,b){
+        return a*b
+    }
+
+    // hacer de cuenta que esta en otro archivo y carpeta
+    const getAutor = ()=>{
+        return 'acercado todos escuchar la leyenda de chupa chota'
+    }
+    export const libro = 'acerca de'
+
+    // tambien podemos exportar un bloque de codigo por defecto - solo se puede uno
+    export default getAutor
+```
+- importamos los bloques de codigo en nuestro index.js
+```js
+    // impota todo el archivo con todos los modulos
+    //import * as moduleMatematica from './modulos/matematicas.js
+    import getAutor , {libro} from './modulos/literatura.js'
+    import { suma , multiplica } from './modulos/matematicas.js'
+
+    const sum = suma(10,20)
+
+    console.log(sum)
+```
+
+

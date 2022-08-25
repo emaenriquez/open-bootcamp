@@ -1,5 +1,4 @@
 
-const logger = require('./logger')
 
 function msj_error(val) {
     if(typeof val === "number"){ 
@@ -15,5 +14,5 @@ try{
     const msj = msj_error(n)
     console.log(msj)
 } catch(e){
-    logger.error(e)
+    console.error(e)
 }
